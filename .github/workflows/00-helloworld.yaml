@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 16.20.2
           cache: npm
-        working-directory: ./00-helloworld
+          cache-dependency-path: 00-helloworld/package-lock.json
       - name: Install
         run: npm install
         working-directory: ./00-helloworld

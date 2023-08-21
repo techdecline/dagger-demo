@@ -4,18 +4,14 @@ jobs:
   dagger:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v3
-      -
-        name: Setup node
+      - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 16.20.2
           cache: npm
-      -
-        name: Install
+      - name: Install
         run: npm install
-      -
-        name: Release and deploy with Dagger
+      - name: Release and deploy with Dagger
         run: node 00-helloworld/build.mts

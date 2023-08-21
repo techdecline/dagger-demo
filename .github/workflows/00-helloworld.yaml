@@ -1,5 +1,7 @@
 name: 'HelloWorld'
 
+on: workflow_dispatch
+
 jobs:
   dagger:
     runs-on: ubuntu-latest

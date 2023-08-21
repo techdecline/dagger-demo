@@ -12,3 +12,9 @@ see [Dagger.io Documentation for Golang](https://docs.dagger.io/sdk/go/371491/in
 
 * When developing in a Dev Container, Docker in Docker is required.
 * Everything is cached by default
+
+## tfstate
+
+rg: rg-dagger
+name: sadaggerm7yhuqiwpw5h
+container: tfstate

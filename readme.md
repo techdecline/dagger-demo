@@ -2,7 +2,7 @@
 
 ## Preparation Golang
 
-see [Dagger.io Documentation for Typescript](https://docs.dagger.io/sdk/go/371491/install)
+see [Dagger.io Documentation for Golang](https://docs.dagger.io/sdk/go/371491/install)
 
 * install Dagger SDK
     `go get dagger.io/dagger@latest`

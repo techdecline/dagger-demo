@@ -1,7 +1,7 @@
 # 00-helloworld
 
 * Run Hello World
-    `node --loader ts-node/esm ./build.mts`
+    `go run main.go`
 
 * Run Terraform Plan
 

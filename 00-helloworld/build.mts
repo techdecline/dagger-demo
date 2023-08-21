@@ -9,7 +9,7 @@ connect(
 
     // execute
     const version = await node.stdout()
-
+    
     // print output
     console.log("Hello from Dagger and Node " + version)
   },

@@ -13,7 +13,10 @@ jobs:
         with:
           node-version: 16.20.2
           cache: npm
+        working-directory: ./00-helloworld
       - name: Install
         run: npm install
+        working-directory: ./00-helloworld
       - name: Release and deploy with Dagger
-        run: node 00-helloworld/build.mts
+        run: node ./build.mts
+        working-directory: ./00-helloworld

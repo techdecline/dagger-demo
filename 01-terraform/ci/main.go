@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"log"
+	"strings"
 
 	"dagger.io/dagger"
 )
@@ -43,15 +44,15 @@ func build(ctx context.Context) error {
 
 	// set Environment Variables in Container
 	for _,v := range vars {
-		terraform = terraform.WithEnvVariable("v", os.Getenv(v))
+		terraform = terraform.WithEnvVariable(strings.Replace(v,"AZURE","ARM",1), os.Getenv(v))
 	}
 
-	// run init
+	// define the Terraform Init Command
     terraform = terraform.WithExec([]string{"init"})
 
-	// define the application build command
-    path := "build/tfplan"
-    terraform = terraform.WithExec([]string{"plan", "-out", path})
+	// define the Terraform Plan Command
+	path := "/src"
+    terraform = terraform.WithExec([]string{"plan","-out","tfplan"})
 
     // get reference to build output directory in container
     output := terraform.Directory(path)

@@ -23,3 +23,7 @@ jobs:
     - run: |
         go get dagger.io/dagger@latest
         go run main.go
+    - uses: actions/upload-artifact@v3
+      with:
+        name: terraform-plan
+        path: plan/tfplan

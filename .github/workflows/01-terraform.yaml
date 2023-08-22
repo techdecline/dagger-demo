@@ -1,4 +1,4 @@
-name: 'TerraformPlan'
+name: 'TerraformComplete'
 
 on: workflow_dispatch
 

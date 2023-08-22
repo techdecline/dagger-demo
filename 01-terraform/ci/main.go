@@ -36,6 +36,7 @@ func build(ctx context.Context) error {
 
 	// Get Current Working Directory
 	cwd, err := os.Getwd()
+	fmt.Println(fmt.Sprintf("Current working dir: %s", cwd))
 	if err != nil {
 		log.Fatalf("Working Directory could not be found")
 	}
@@ -79,6 +80,7 @@ func build(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
+	fmt.Println(fmt.Sprintf("Terraform Plan Dirctory: %s", path))
 
 	return nil
 }

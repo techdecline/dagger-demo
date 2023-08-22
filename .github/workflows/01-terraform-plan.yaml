@@ -2,6 +2,12 @@ name: 'TerraformPlan'
 
 on: workflow_dispatch
 
+env:
+  AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+  AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+  AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+
 defaults:
   run:
     working-directory: 01-terraform/ci
@@ -17,3 +23,7 @@ jobs:
     - run: |
         go get dagger.io/dagger@latest
         go run main.go
+    - uses: actions/upload-artifact@v3
+      with:
+        name: terraform-plan
+        path: /home/runner/work/dagger-demo/dagger-demo/01-terraform/ci/plan/tfplan

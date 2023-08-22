@@ -28,6 +28,7 @@ jobs:
         name: terraform-plan
         path: /home/runner/work/dagger-demo/dagger-demo/01-terraform/ci/plan/tfplan
   tfapply:
+    needs: tfplan
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3

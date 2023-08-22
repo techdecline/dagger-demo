@@ -1,0 +1,19 @@
+name: 'TerraformPlan'
+
+on: workflow_dispatch
+
+defaults:
+  run:
+    working-directory: 01-terraform/ci
+
+jobs:
+  dagger:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-go@v4
+      with:
+        go-version: '1.21.0' 
+    - run: |
+        go get dagger.io/dagger@latest
+        go run main.go

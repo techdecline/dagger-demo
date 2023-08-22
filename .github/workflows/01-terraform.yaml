@@ -13,7 +13,7 @@ defaults:
     working-directory: 01-terraform/ci
 
 jobs:
-  dagger:
+  tfplan:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -27,3 +27,17 @@ jobs:
       with:
         name: terraform-plan
         path: /home/runner/work/dagger-demo/dagger-demo/01-terraform/ci/plan/tfplan
+  tfapply:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/download-artifact@v3
+      with:
+        name: terraform-plan
+        path: /home/runner/work/dagger-demo/dagger-demo/01-terraform/ci/plan
+    - uses: actions/setup-go@v4
+      with:
+        go-version: '1.21.0' 
+    - run: |
+        go get dagger.io/dagger@latest
+        go run main.go -m apply

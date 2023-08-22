@@ -26,4 +26,4 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: terraform-plan
-        path: plan/tfplan
+        path: /home/runner/work/dagger-demo/dagger-demo/01-terraform/ci/plan/tfplan

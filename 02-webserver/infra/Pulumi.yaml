@@ -1,0 +1,3 @@
+name: go-webserver-infra
+runtime: go
+description: Azure Container Group and Container Instance for Go Webserver

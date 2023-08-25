@@ -45,12 +45,12 @@ func main() {
 	}
 
 	// Run Deployment Pipeline
-	if err := deploy(context.Background(), containerGroupName, resourceGroupName, azureLocation, imageUrl, "webserver"); err != nil {
+	if err := deploy(context.Background(), containerGroupName, resourceGroupName, azureLocation, imageUrl, "webserver", registryUsername, registryPassword, loginServer); err != nil {
 		fmt.Println(err)
 	}
 }
 
-func deploy(ctx context.Context, containerGroupName string, resourceGroupName string, location string, imageUrl string, containerName string) error {
+func deploy(ctx context.Context, containerGroupName string, resourceGroupName string, location string, imageUrl string, containerName string, registryUsername string, registryPassword string, registryServer string) error {
 	fmt.Println("App Deployment Pipeline")
 
 	// initialize Dagger client
@@ -73,6 +73,11 @@ func deploy(ctx context.Context, containerGroupName string, resourceGroupName st
 	}
 
 	// define deployment request
+	registryCreds := armcontainerinstance.ImageRegistryCredential{
+		Password: to.Ptr(registryPassword),
+		Username: to.Ptr(registryUsername),
+		Server:   to.Ptr(registryServer),
+	}
 	containerGroup := armcontainerinstance.ContainerGroup{
 		Properties: &armcontainerinstance.ContainerGroupPropertiesProperties{
 			Containers: []*armcontainerinstance.Container{
@@ -102,8 +107,9 @@ func deploy(ctx context.Context, containerGroupName string, resourceGroupName st
 						Protocol: to.Ptr(armcontainerinstance.ContainerGroupNetworkProtocolTCP),
 					}},
 			},
-			OSType:        to.Ptr(armcontainerinstance.OperatingSystemTypesLinux),
-			RestartPolicy: to.Ptr(armcontainerinstance.ContainerGroupRestartPolicyAlways),
+			ImageRegistryCredentials: []*armcontainerinstance.ImageRegistryCredential{&registryCreds},
+			OSType:                   to.Ptr(armcontainerinstance.OperatingSystemTypesLinux),
+			RestartPolicy:            to.Ptr(armcontainerinstance.ContainerGroupRestartPolicyAlways),
 		},
 		Location: to.Ptr(location),
 	}

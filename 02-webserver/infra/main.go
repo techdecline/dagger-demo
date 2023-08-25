@@ -52,7 +52,7 @@ func main() {
 		}).(pulumi.StringOutput)
 
 		// Create an Azure Container Group with a single container instance
-		_, err = containerinstance.NewContainerGroup(ctx, "myContainerGroup", &containerinstance.ContainerGroupArgs{
+		containerGroup, err := containerinstance.NewContainerGroup(ctx, "myContainerGroup", &containerinstance.ContainerGroupArgs{
 			ResourceGroupName:  resourceGroup.Name,
 			ContainerGroupName: pulumi.String("helloworld"),
 			Containers: containerinstance.ContainerArray{
@@ -70,7 +70,7 @@ func main() {
 			OsType: pulumi.String("Linux"),
 			// IpAddressType: pulumi.String("public"),
 			Location: resourceGroup.Location,
-		})
+		}, pulumi.IgnoreChanges([]string{"containers"})) // Here we ignore changes to 'containers' property)
 		if err != nil {
 			return err
 		}
@@ -80,6 +80,8 @@ func main() {
 		ctx.Export("registryUsername", adminUsername)
 		ctx.Export("registryPassword", adminPassword)
 		ctx.Export("loginServer", registry.LoginServer)
+		ctx.Export("containerGroupName", containerGroup.Name)
+		ctx.Export("azureLocation", resourceGroup.Location)
 
 		return nil
 	})

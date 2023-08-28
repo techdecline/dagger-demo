@@ -1,6 +1,6 @@
 module terraform-dagger
 
-go 1.21.0
+go 1.21
 
 require dagger.io/dagger v0.8.4
 

@@ -14,7 +14,7 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    storage_account_name = "sadaggerm7yhuqiwpw5h"
+    storage_account_name = "asdf"
     container_name       = "tfstate"
     key                  = "01-terraform.tfstate"
     use_azuread_auth     = true

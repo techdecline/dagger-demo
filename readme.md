@@ -21,6 +21,8 @@ This pipeline can plan and apply a Terraform configuration. A mode selector impl
 
 In this example, a Web Server implemented in Golang will be packaged as a container and updated to an Azure Container Registry and rolled out to an Azure Container Instance. Required infrastructure will be rollout by a Pulumi Program also part of the repo.
 
+Test URL: http://localhost:8080/add?a=2&b=5
+
 ## General Notes
 
 * When developing in a Dev Container, Docker in Docker is required. Same goes for Container-based CI/CD-Workers

@@ -1,3 +1,7 @@
 go 1.21.5
 
-use ./00-helloworld
+use (
+	./00-helloworld
+	./02-webserver/ci
+	./02-webserver/infra
+)

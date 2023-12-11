@@ -1,3 +1,4 @@
 .devcontainer/
 01-terraform/ci/plan
 az_creds.sh
+az_creds.ps1

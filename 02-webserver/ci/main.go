@@ -26,7 +26,7 @@ func main() {
 
 	//TODO: implement dynamic stack selection
 	// Run Infra Pipeline and fetch stack outputs
-	err, stackOutput := infra(context.Background(), vars, "dev")
+	err, stackOutput := infra(context.Background(), vars, "ceres-test")
 	if err != nil {
 		fmt.Println(err)
 	}

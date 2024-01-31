@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/pulumi/pulumi-azure-native-sdk/containerinstance"
 	"github.com/pulumi/pulumi-azure-native-sdk/containerregistry"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 	"github.com/pulumi/pulumi-azure-native-sdk/resources"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )

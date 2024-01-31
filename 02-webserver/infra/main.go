@@ -3,16 +3,15 @@ package main
 import (
 	"github.com/pulumi/pulumi-azure-native-sdk/containerinstance"
 	"github.com/pulumi/pulumi-azure-native-sdk/containerregistry"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 	"github.com/pulumi/pulumi-azure-native-sdk/resources"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-
 		conf := config.New(ctx, "acr")
-        name := conf.Require("name")
+		name := conf.Require("name")
 		// Create an Azure Resource Group
 		resourceGroup, err := resources.NewResourceGroup(ctx, "rg-dagger-go-webserver", nil)
 		if err != nil {

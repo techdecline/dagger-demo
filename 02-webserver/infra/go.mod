@@ -2,7 +2,12 @@ module go-webserver-infra
 
 go 1.18
 
-require github.com/pulumi/pulumi/sdk/v3 v3.78.1
+require (
+	github.com/pulumi/pulumi-azure-native-sdk/containerinstance v1.104.0
+	github.com/pulumi/pulumi-azure-native-sdk/containerregistry v1.104.0
+	github.com/pulumi/pulumi-azure-native-sdk/resources v1.104.0
+	github.com/pulumi/pulumi/sdk/v3 v3.78.1
+)
 
 require (
 	github.com/Microsoft/go-winio v0.5.2 // indirect
@@ -39,16 +44,13 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/pulumi/pulumi-azure-native-sdk v1.104.0 // indirect
-	github.com/pulumi/pulumi-azure-native-sdk/containerinstance v1.104.0 // indirect
-	github.com/pulumi/pulumi-azure-native-sdk/containerregistry v1.104.0 // indirect
-	github.com/pulumi/pulumi-azure-native-sdk/resources v1.104.0 // indirect
-	github.com/pulumi/pulumi-azure-native/sdk v1.93.0 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
 	github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06 // indirect
 	github.com/santhosh-tekuri/jsonschema/v5 v5.0.0 // indirect
 	github.com/sergi/go-diff v1.2.0 // indirect
 	github.com/skeema/knownhosts v1.1.0 // indirect
+	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/cobra v1.6.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect

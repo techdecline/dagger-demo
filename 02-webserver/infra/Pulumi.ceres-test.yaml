@@ -1,2 +1,3 @@
 config:
+  acr:name: acrdaggerdemocerestest
   azure-native:location: westeurope

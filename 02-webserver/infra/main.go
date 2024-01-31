@@ -10,6 +10,8 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 
+		conf := config.New(ctx, "acr")
+        name := conf.Require("name")
 		// Create an Azure Resource Group
 		resourceGroup, err := resources.NewResourceGroup(ctx, "rg-dagger-go-webserver", nil)
 		if err != nil {
@@ -20,7 +22,7 @@ func main() {
 		registry, err := containerregistry.NewRegistry(ctx, "acr-dagger-go-webserver", &containerregistry.RegistryArgs{
 			AdminUserEnabled:  pulumi.Bool(true),
 			ResourceGroupName: resourceGroup.Name,
-			RegistryName:      pulumi.String("acrdaggerdemo"),
+			RegistryName:      pulumi.String(name),
 			Sku: &containerregistry.SkuArgs{
 				Name: pulumi.String("Premium"),
 			},
